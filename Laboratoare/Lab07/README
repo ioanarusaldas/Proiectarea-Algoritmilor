@@ -1,0 +1,92 @@
+TASK1
+Se da un graf neorientat cu n noduri si m muchii. Se mai da un nod special 
+source, pe care il vom numi sursa.
+
+Se cere sa se gaseasca numarul minim de muchii ce trebuie parcurse de la source 
+la toate celelalte noduri.
+
+Restrictii si precizari:
+n,m<=105
+timp de executie
+C++: 1s
+Java: 1s
+Rezultatul se va returna sub forma unui vector d cu n elemente.
+Conventie:
+
+d[node] = numarul minim de muchii ce trebuie parcurse de la source la nodul node
+d[source] = 0
+d[node] = -1, daca nu se poate ajunge de la source la node
+______________________________________________________________________
+Exemplu1:
+n=5 m=4 source=3
+
+muchii:(1,2);(1,3);(2,3);(2,4);
+
+Raspuns:
+
+node	1	2	3	4	5
+d	1	1	0	2	-1
+
+
+d[3] = 0 pentru ca 1 este sursa
+d[1] = d[2] = 1 pentru ca exista muchie directa de la 2 la fiecare nod
+d[4] = 2 pentru ca trebuie sa parcurgem 2 muchii (3−2−4)
+d[5] = -1 pentru ca nu se poate ajunge de la 3 la 5
+
+Exemplu2:
+n=7 m=7 source=1
+
+muchii:(1,2);(1,4);(2,3);(4,5);(5,6);(3,7);(7,6)
+
+Raspuns:
+
+node	1	2	3	4	5	6	7
+d	0	1	2	1	2	3	3
+
+
+d[1] = 0 pentru ca 1 este sursa
+d[2] = d[4] = 1 pentru ca exista muchie directa de la 2 la fiecare nod
+d[3] = d[5] = 2 pentru ca trebuie sa parcurgem 2 muchii (1−2−3, 1−4−5)
+d[6] = d[7] = 3 pentru ca trebuie sa parcurgem 3 muchii (1−2−3−7 sau 1−4−5−6)
+_________________________________________________________________________
+TASK2
+Se da un graf orientat aciclic cu n noduri si m arce. 
+Se cere sa se gaseaca o sortare topologica valida.
+
+Restrictii si precizari:
+n,m<=105
+timp de executie
+C++: 1s
+Java: 1s
+Rezultatul se va returna sub forma unui vector topsort cu n elemente.
+Vectorul topsort va reprezenta o permutare a multimii 1,2,3,...,n 
+reprezentand sortarea topologica gasita.
+________________________________________________________________________
+Exemplu:
+ m=4
+
+arce:(1,2);(1,3);(2,3);(2,4);
+
+Raspuns: topsort=[1,2,3,4,5]
+
+Explicatie: Graful dat este cel din figura urmatoare.
+
+
+
+deoarece avem arcele 1→3 si 1→2, 1 trebuie sa apara inainte lui 2 si 3
+deoarece avem arcul 2→3 si 2→4, 2 trebuie sa apara inainte lui 3 si 4
+5 nu depinde de nimeni, poate sa apara oriunde
+Toate sortarile topologice valide sunt:
+
+cele date de ordinea relativa a primelor 4 noduri: 1,2,3,4)
+topsort=[1,2,3,4,5]
+topsort=[1,2,3,5,4]
+topsort=[1,2,5,3,4]
+topsort=[1,5,2,3,4]
+topsort=[5,1,2,3,4]
+cele date de ordinea relativa a primelor 4 noduri: (1,2,4,3)
+topsort=[1,2,4,3,5]
+topsort=[1,2,4,5,3]
+topsort=[1,2,5,4,3]
+topsort=[1,5,2,4,3]
+topsort=[5,1,2,4,3]

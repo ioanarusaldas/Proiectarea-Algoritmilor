@@ -1,0 +1,76 @@
+TASK1
+	Fie un sir de numere naturale strict pozitive. Cate subsiruri 
+(submultimi nevide) au suma numerelor para?
+_______________________________________________
+Exemplu1:
+n=3
+
+i	1	2	3
+v	2	6	4
+Raspuns: 7
+
+Explicatie: Toate subsirurile posibile sunt
+
+[2]
+[2,6]
+[2,6,4]
+[2,4]
+[6]
+[6,4]
+[4]
+Toate subsirurile de mai sus au suma para.
+
+Exemplu2:
+n=3
+
+i	1	2	3
+v	2	1	3
+Raspuns: 3
+
+Explicatie: Toate subsirurile posibile sunt
+
+[2]
+[2,1]
+[2,1,3]
+[2,3]
+[1]
+[1,3]
+[3]
+Subsirurile cu suma para sunt: [2], [2,1,3], [1,3].
+
+Exemplu3:
+n=3
+
+i	1	2	3
+v	3	2	1
+
+Raspuns: 3
+
+Explicatie: Toate subsirurile posibile sunt
+
+[3]
+[3,2]
+[3,2,1]
+[3,1]
+[2]
+[2,1]
+[1]
+Subsirurile cu suma para sunt: [3,2,1], [3,1], [2].
+___________________________________________________________________________
+
+TASK2-Expresie booleana
+Se da o expresie booleana corecta cu n termeni. Fiecare din termeni poate fi 
+unul din stringurile true, false, and, or, xor.
+Numarati modurile in care se pot aseza paranteze astfel incat rezultatul sa fie 
+true. Se respecta regulile de la logica (tabelele de adevar pentru operatiile 
+and, or, xor).
+Deoarece rezultatul poate fi prea mare, se cere restul impartirii lui la 
+1000000007 (109+7).
+
+Exemplu:
+n=5 si expr = ['T', '&', 'F', '^', 'T'] (expr = [ true and false xor true])
+Raspuns: 2
+Explicatie: Exista 2 moduri corecte de a paranteza expresia astfel incat sa 
+obtinem rezultatul true (1).
+T&(F^T)
+(T&F)^T

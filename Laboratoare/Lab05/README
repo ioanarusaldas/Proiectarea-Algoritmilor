@@ -1,0 +1,73 @@
+TASK1-Aranjamente
+	Fie N si K doua numere naturale strict pozitive. Se cere afisarea tuturor 
+aranjamentelor de N elemente luate cate K din multimea {1, 2, …, N}.
+____________________________________________________________________
+Exemplu:
+Fie N = 3, K = 2 ⇒ M = {1, 2, 3}
+
+Solutie:
+
+{1, 2}
+{1, 3}
+{2, 1}
+{2, 3}
+{3, 1}
+{3, 2}
+______________________________________________________________________
+TASK2 - Submultimi
+Fie N un numar natural strict pozitiv. 
+Se cere afisarea tuturor submultimilor multimii {1, 2, …, N}.
+_________________________________________________________________
+Exemplu:
+Fie N = 4 ⇒ M = {1, 2, 3, 4}
+
+Solutie: {} - multimea vida {1} {1, 2} {1, 2, 3} {1, 2, 3, 4} {1, 2, 4} {1, 3} 
+{1, 3, 4} {1, 4} {2} {2, 3} {2, 3, 4} {2, 4} {3} {3, 4} {4}
+__________________________________________________________________________
+
+TASK3-Problema damelor
+
+Problema damelor (sau problema reginelor) trateaza plasarea a 8 regine de sah 
+pe o tablă de șah de dimensiuni 8 x 8 astfel incat sa nu existe doua regine 
+care se ameninta reciproc. Astfel, se cauta o solutie astfel incat nicio pereche
+de doua regine sa nu fie pe acelasi rand, pe aceeasi coloana, sau pe aceeasi 
+diagonala. Problema cu opt regine este doar un caz particular pentru problema 
+generala, care presupune plasarea a N regine pe o tablă de sah N x N în 
+aceleasi conditii. Pentru aceasta problema, există solutii pentru toate 
+numerele naturale N cu excepția lui N = 2 si N = 3.
+______________________________________________________________________
+Exemplu:
+Fie N = 5
+
+Solutie:
+
+X	-	-	-	-
+-	-	X	-	-
+-	-	-	-	X
+-	X	-	-	-
+-	-	-	X	-
+X reprezinta o dama, - reprezinta spatiu gol.
+_____________________________________________________________________
+TASK4-Generare de siruri
+Vi se da o lista de caractere si o lista de frecvente (pentru caracterul de 
+pe pozitia i, frecventa de pe pozitia i). Vi se cere sa generati toate sirurile 
+care se pot forma cu aceste caractere si aceste frecvente stiind ca nu pot fi 
+mai mult de K aparitii consecutive ale aceluiasi caracter.
+_____________________________________________________________________
+Exemplu:
+Fie caractere[] = {'a', 'b', 'c'}, freq[] = {1, 1, 2}, K = 5
+
+Solutie:
+
+abcc
+acbc
+accb
+bacc
+bcac
+bcca
+cabc
+cacb
+cbac
+cbca
+ccab
+ccba

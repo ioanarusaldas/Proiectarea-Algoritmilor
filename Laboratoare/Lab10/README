@@ -1,0 +1,12 @@
+TASK1-Kruskal
+Se da un graf neorientat conex cu n noduri si m muchii. Folositi algoritmul lui 
+Kruskal pentru a calcula costul minim al unui arbore de acoperire.
+
+Restrictii si precizari:
+n<=2∗105
+m<=4∗105
+−103<=c<=103, unde c este costul unei muchii
+*************************************************************
+TASK2-Prim
+Aceeasi cerinta si aceleasi restrictii ca mai sus, doar ca se cere gasirea 
+costului minim al unui arbore de acoperire folosind algoritmul lui Prim.

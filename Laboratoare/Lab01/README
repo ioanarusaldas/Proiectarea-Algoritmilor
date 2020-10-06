@@ -1,0 +1,50 @@
+TASK1
+	Se da un sir sortat v cu n elemente. Gasiti numarul de elemente egale 
+cu x din sir.
+______________________________________________________
+Exemplu:
+n=6  si x=10
+
+i	1	2	3	4	5	6
+v	1	2	4	10	10	20
+Raspuns: 2
+
+Explicatie: 10 apare de 2 ori in sir.
+______________________________________________________
+
+
+
+TASK2
+	Se da un numar real n. Scrieti un algoritm de complexitate O(log n) 
+care sa calculeze sqrt(n) cu o precizie de 0.001.
+____________________________________________________________
+Exemplu:
+n=0.25
+
+Raspuns: orice valoare intre 0.499 si 0.501 (inclusiv)
+____________________________________________________________
+
+
+TASK3
+	Rezolvati problema ZParcurgere folosind scheletul pus la dispozitie.
+
+TASK4
+	Se dau doua numere naturale base si exponent. Scrieti un algoritm de 
+complexitate O(log(exponent)) care sa calculeze baseexponent % MOD.
+____________________________________________________________________
+Intrucat expresia baseexponent este foarte mare, dorim sa aflam doar restul 
+impartirii lui la un numar MOD.
+
+Proprietati matematice necesare:
+
+(a+b) % MOD=((a % MOD)+(b % MOD)) % MOD
+(a ∗b) % MOD=((a % MOD) ∗(b % MOD)) % MOD
+
+Exemplu:
+base=2, exponent=10, MOD=5
+
+Raspuns: 4
+
+Explicatie: 210 % 5=4
+____________________________________________________________________________
+

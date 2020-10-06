@@ -1,0 +1,70 @@
+TASK1-Dijkstra
+Se da un graf orientat cu n noduri si m arce. Graful are pe arce costuri pozitive.
+
+Folositi Dijkstra pentru a gasi costul minim (lungimea minima) a unui drum de la 
+o sursa data (source) la toate celelalte n - 1 noduri din graf.
+
+Costul / lungimea unui drum este suma costurilor/lungimilor arcelor care compun 
+drumul.
+
+Restrictii si precizari:
+n<=50.000
+m<=2.5∗105
+0<=c<=20.000, unde c este costul/lungimea unui arc
+timp de executie
+C++: 1s
+Java: 2s
+Rezultatul se va returna sub forma unui vector d cu n + 1 elemente.
+Conventie:
+
+d[node] = costul minim / lungimea minima a unui drum de la source la nodul node
+d[source] = 0
+d[node] = -1 , daca nu se poate ajunge de la source la node
+d[0] nu este folosit, deci ca fi initializat cu 0! (
+am pastrat indexarea nodurilor de la 1)
+*********************************************************************
+
+TASK2-Bellman-Ford
+Se da un graf orientat conex cu n noduri si m arce. Graful are pe arce costuri 
+pozitive sau negative.
+
+Folositi Bellman-Ford pentru a gasi costul minim (lungimea minima) a unui drum 
+de la o sursa data (source) la toate celelalte n - 1 noduri din graf. 
+In caz ca se va detecta un ciclu de cost negativ, se va semnala acest lucru.
+
+Costul / lungimea unui drum este suma costurilor/lungimilor arcelor care 
+compun drumul.
+
+Restrictii si precizari:
+
+n<=50.000
+m<=2.5∗105
+−1.000<=c<=+1.000, unde c este costul/lungimea unui arc
+timp de executie
+C++: 1s
+Java: 2s
+*************************************************************************
+
+TASK3
+RoyFloyd
+Se da un graf orientat cu n noduri. Graful are costuri pozitive pe arce.
+
+Se da matricea ponderilor , se cere matricea drumurilor minime.
+
+Restrictii si precizari:
+n<=100
+0<=c<=1.000, unde c este costul unui arc
+daca nu exista muchie intre o pereche de noduri x si y, distanta de la nodul x l
+a nodul y din matricea ponderilor va fi 0
+daca dupa aplicarea algoritmului nu se gaseste drum pentru o pereche de noduri 
+x si y, se va considera distanta dintre ele egala cu 0 (se stocheaza in matricea
+ distantelor valoarea 0)
+drumul de la nodul i la nodul i are lungime 0 (prin conventie)
+timp de executie
+C++: 1s
+Java: 2s
+***********************************************************
+BONUS
+Pentru exercitiul cu Dijkstra, reconstituiti drumul de lungime minima source 
+la celelalte noduri din graf.
+Rezolvare: decomentare functia "bonus"

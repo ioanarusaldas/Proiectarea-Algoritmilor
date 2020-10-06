@@ -1,0 +1,109 @@
+TASK1 - Rucsac
+	Fie un set cu n obiecte (care pot fi taiate - varianta continua a problemei).
+Fiecare obiect i are asociata o pereche (wi,pi) cu semnificatia:
+	wi = weighti = greutatea obiectului cu numarul i
+	pi = pricei = pretul obiectului cu numarul i
+	wi>=0 si pi>0
+Gigel are la dispozitie un rucsac de volum infinit, dar care suporta o greutate 
+maxima (notata cu W - weight knapsack).
+El vrea sa gaseasca o submultime de obiecte (nu neaparat intregi) pe care sa 
+le bage in rucsac, astfel incat suma profiturilor sa fie maxima.
+
+Daca Gigel baga in rucsac obiectul i, caracterizat de (wi,pi), 
+atunci profitul adus de obiect este pi (presupunem ca il vinde cu cat valoareaza).
+
+In aceasta varianta a problemei, Gigel poate taia oricare dintre obiecte,
+obtinand o proportie din acesta. Daca Gigel alege alege doar x din greutatea 
+wi a obiectului i, atunci el castiga doar xwi∗pi.
+
+Task-uri:
+Sa se determine profitul maxim pentru Gigel.
+Care este complexitatea solutiei (timp + spatiu)? De ce?
+____________________________________________________________________
+Exemplu1:
+obiecte:
+index	0	1	2
+greutate	60	100	120
+valoare	10	20	30
+greutate = 50
+
+Output: 12.5 Explicatie: avem 50 capacitate si toate obiectele au o 
+greutatate mai mare, decidem sa luam cat putem din produsul cu raportul 
+valoare / greutate cel mai mare. profitu = 30 / 120 * 50 = 12.5
+
+Exemplu2:
+obiecte:
+index	0	1	2
+greutate	20	50	30
+valoare	60	100	120
+greutate = 50
+
+Output: 180 Explicatie: Sortam obiectele dupa raportul valoare profit si 
+avem in ordine: {30, 120}, {20, 60}, {50, 100} Introducem obiecte pana cand 
+umplem sacul ⇒ intra primele 2 obiecte. Calculam profitul 120 + 60 = 180
+__________________________________________________________________________
+
+TASK2-Distante
+
+Consideram 2 localitati A si B aflate la distanta D. Intre cele 2 localitati 
+avem un numar de n benzinarii, date prin distanta fata de localitatea A. 
+Masina cu care se efectueaza deplasarea intre cele 2 localitati poate parcurge 
+maxim m kilometri avand rezervorul plin la inceput. Se doreste parcurgerea 
+drumului cu un numar minim de opriri la benzinarii pentru realimentare 
+(dupa fiecare oprire la o benzinarie, masina pleaca cu rezervorul plin).
+
+Distantele catre benzinarii se reprezinta printr-o lista de forma 
+0<d1<d2<...<dn, unde di (1<=i<=n) reprezinta distanta de la A la benzinaria i. 
+Pentru simplitate, se considera ca localitatea A se afla la 0, iar dn=D 
+(localitatea B se afla in acelasi loc cu ultima benzinarie).
+
+Se garanteaza ca exista o planificare valida a opririlor astfel incat sa se 
+poata ajunge la localitatea B.
+______________________________________________________________________
+Exemplu:
+n=5
+
+m=10
+
+d=(2,8,15,25,30)
+
+Raspunsul este 3, efectuand 3 opriri la a 2-a, a 3-a, respectiv a 4-a benzinarie.
+________________________________________________________________________________
+
+TASK3-Teme la ACS
+	Pe parcursul unui semestru, un student are de rezolvat n teme. 
+Se cunosc enunțurile tuturor celor n teme de la începutul semestrului.
+
+Timpul de rezolvare pentru oricare dintre teme este de o săptămână și nu se 
+poate lucra la mai multe teme în același timp. Pentru fiecare tema se cunoaște 
+un termen limita d[i] (exprimat în săptămâni - deadline pentru tema i) și un 
+punctaj p[i].
+
+Nicio fracțiune din punctaj nu se mai poate obține după expirarea
+termenului limită.
+Task-uri:
+
+Să se definească o planificare de realizare a temelor, în așa fel încât 
+punctajul obținut să fie maxim.
+Care este complexitatea solutiei (timp + spatiu)? De ce?
+______________________________________________________________________________
+Exemplu1:
+index	0	1	2	3	4
+deadline	6	6	2	7	7
+punctaj	5	4	1	5	8
+Output: 1+4+5+5+8=23
+
+Explicatie: Putem face toate temele deoarece pana ajungem la deadline-urile lor 
+avem suficiente unitati de timp.
+
+Exemplu2:
+index	0	1	2	3	4	5	6	7
+deadline	3	3	3	3	9	11	11	11
+punctaj	4	9	6	5	10	4	2	6
+Output: 5+6+9+10+2+4+6=42
+
+Explicatie: Pana in deadline 3 avem la dispozitie 3 unitati de timp si 4 teme. 
+Deci sortam dupa punctaj si le includem pe cele mai valoroase: 5, 6 ,9. 
+Pana la deadline 9 avem la dispoztie 6 unitati de timp si 4 teme. 
+Le includem pe toate.
+
