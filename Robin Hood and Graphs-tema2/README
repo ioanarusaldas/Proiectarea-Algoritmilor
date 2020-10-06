@@ -1,0 +1,79 @@
+Savu Ioana Rusalda 325CB
+
+In rezolvarea temei am folosit solutiile din laboratoare.
+
+PROBLEMA 1
+	Deoarece in problema se vorbeste despre distanta de la orasul in care
+se ascunde Robin la orasele in care se afla lorzi, am ales sa folosesc
+parcurgerea BFS pentru a determina daca exista cale intre cele doua tipuri de 
+orase.
+	Am decis sa blochez pe rand orasele din permutare.
+	Daca dupa blocarea orasului p[1] inca exista cale de la Robin la orasele
+lorzilor blocam orasul p[2] si verificam inca o data...s.a.m.d
+	Deoarece cautarea liniara reprezenta o complexitate foarte mare, am optat 
+pentru cautarea binara. Astfel, am determinat numarul minim de orase ce necesita
+a fi blocate.
+	Initial am blocat jumatate din orase, daca acest lucru determina izolarea
+orasului in care se afla Robin, incerc izolarea unui numar mai mic de orase
+(jumatate din numarul anterior).
+	Daca jumatate de orase blocate nu sunt suficiente ,voi bloca 3 sferturi.
+	Acesti 2 pasi se vor repeta pana cand se va gasi numarul minim de orase
+blocate. (mij < min)
+
+	Metode folosite:
+	initialize() -> initializeaza vectorul visited si vectorul de orase blocate
+cu false.
+	block_towns() -> blocheaza orasele in functie de numarul obtinut din
+cautarea binarea
+	bfs() -> parcurgere bfs din orasul in care se afla Robin
+
+	Complexitate : O(|V|^2)
+
+
+PROBLEMA 2
+	Deoarece in problema se vorbeste de drumuri unidirectionale ne putem da
+seama ca este vorba de un graf orientat. De asemenea, se specifica faptul ca 
+daca Robin porneste din orasul A, nu se va mai intoarce niciodata in orasul A.
+Astfel se poate vorbi despre un graf fara cicluri.
+	Daca avem un graf orientat,fara cicluri,pentru o complexitate cat mai mica,
+putem sa sa relaxam muchiile nodurilor, parcurgandu-le pe acestea in ordinea 
+data de sortarea topologica. 
+	In rezolvarea acestei probleme am folosit solutia din laboratoarele 7 si 9.
+	Din laboratorul numarul 9 am luat solutia de la algoritmul Bellman-Ford.
+Neavand cicluri negative nu a fost nevoie sa relaxez muchiile de |V-1| ori.
+	De asemenea, in vederea relaxarii muchiilor am parcurs vectorul de noduri 
+obtinut in urma sortarii topologice.
+	
+	Metode folosite:
+		bellman() -> realizeaza sortarea topologica + relaxarea muchiilor
+		relax_edges -> relaxeaza muchiile (actualizeaza distanta daca este 
+gasita un mai buna decat cea anterioara)
+		solveDfs -> realizeaza dortarea topologica prin parcurgere DFS
+	
+	Complexitate : O(|V|+|E|) 
+
+PROBLEMA 3
+	In vederea realizarii acestei probleme am folosit algoritumul lui Dijkstra, 
+implementat in laboratorul numarul 9.
+	Enuntul denota gasirea unui "drum minim"(pe care se poate consuma cea mai
+putina energie).
+	Pentru realizarea algoritmului am folosit o coada de prioritati si un vector
+de noduri visitate.
+	Am initializat vectorul de vizitat cu false. Am adaugat nodul din care
+porneste Robin in coada si am inceput parcurgerea. Pentru fiecare nod scos din
+coada am actualizat distantele catre copiii sai daca distanta calculata la 
+pasul curent era mai mica conform formulei date.
+	EX:
+	newDistance = (double)  d.get(u) * ((double)1 - (double)(distance / 100)); 
+	Pentru recompunerea drumuli am folosit un vector de parinti pe care l-am 
+parcurs recursiv de la destinatie pana la sursa. 
+
+	Metode folosite:
+		initialize() -> actualizare vector de parinti si vector de distante
+		minPath() -> extrage pe rand noduri din coada si actualizeaza distanta
+		update_distance() -> parcurgerea copiilor nodului curent  + actualizare
+								distanta
+		printPath() -> construieste stringul ce contine calea
+		path -> realizeaza concatenarea sursei la string
+
+		Complexitate : O(|V|^2+|E|)

@@ -1,0 +1,143 @@
+Savu Ioana Rusalda 325CB
+
+In cazul acestei teme am folosit scheletul de laborator,la care am facut cateva 
+modificari in ceea ce priveste citirea din fisier. Majoritatea rezolvarilor
+mele se gasesc in functia getResult(), asemanator laboratorului.
+
+
+
+problema 1: Gigel trezorier la bnr
+	SET 1
+	In rezolvarea primului set, am optat folosirea unei formule/recurente
+	matematice. (2^(n -1)). Pentru ridicarea la putere am folosit Divide et impera.
+	 n - numarul de bacnote.
+	 bacnotele vor respecta urmatoarele reguli:
+	 x-y1/y2...  "bacnota x urmeaza dupa bacnota y1, y2, etc."
+	 10 - 50/100
+	 50 - 10/200
+	 100 - 10/100
+	 200 - 50/500
+	 500 - /200/10
+ex: pt n = 1           10      nivel 0
+		     		  /  \
+		     		50	  100 nivel 1
+
+	pt n = 2        50		nivel 0
+				   /   \
+				 10     200   nivel 1
+				 / \     /  \
+				50  100  50  500  nivel 2
+ 
+	Astfel nivelul n va determina numarul de combinatii pe care il poate face
+Gigel pentru o bacnota. Fiecare radacina din arbore avand exact 2 copii, am 
+putut calcula nr de combinatii rindicand numarul 2 la puterea n.
+Intruat gigel poate incepe combinatiile cu oricare din cele 5 bacnote, exista
+5 * 2^n combinatii posibile.
+In implementarea mea, din considerente matematice(0*5 = 0), am considerat primul
+nivel ca fiind nivelul 1. Pentru a respecta in continuare formula, rezultatul
+l-am calculat astfel: 5 * (2^(n -1)).
+De asemenea, pentru ridicarea la putere am folosit functia logPow din lab 4.
+
+**Complexitate temporala O(log n)
+**Complexitate spatiala O(1).
+
+SET 2
+
+	In rezolvarea celui de-al doilea set am abordat problema din alta 
+perspectiva, intrucat arborele devenea dezechilibrat si greu de urmarit si
+de gasit recurenta.In implementare am folosit programarea dinamica.
+	Pentru asta am interpretat regulile pentru bacnote astfel:
+	x-y1/y2...  "bacnota x pote proveni din bacnotele y1, y2, etc."
+				"bacnota x poate aparea doar daca inaintea ei a aparut
+											una dintre bacnotele y1, y2, etc."
+	10 - 50/100/500
+	50 - 10/200
+	100 - 10/100/200
+	200 - 50/500
+	500 - 200
+
+	In implementare am folosit un "ArrayList<Integer> combinatiiBacnote" in
+care am retinut numarul de bacnote din fiecare tip folosite la pasul anterior.
+Pe pozitia 0 se afla bacnota de 10, pe pozitia 1 se afla bacnota de 50,
+pe pozitia 2 se afla 100, pe 3 200, iar pe ultima 500.
+Pentru a calcula numarul de bacnote de un tip folosite la pasul curent
+am facut suma numerelor de bacnote folosite la pasul anterior ale bacnotelor 
+care preced bacnota curenta.
+Am repetat acest lucru de un numar de ori egal cu n(numarul de bacnote).
+Intruat, Gigel poate incepe combinatiile cu oricare dintre bacnote am 
+initializat array-list-ul cu 1. La final am facut suma elementelor din vector.
+
+**Complexitate temporala O(n)
+**Complexitate spatiala O(1).(spatiul alocat nu depinde de n)
+
+-------------------------------------------------------------------------------
+
+problema 2: Gigel si gardul
+
+	In rezolvarea problemei 2 am folosit o abordare Greedy, asemanatoarea cu cea 
+folosita in laboratorul 2 la "problema spectacolelor".
+	In prima faza am folosit clasa Pair asemanatoare celei din laboratorul 6
+pentru a stoca capatul de start si capatul de sfarsit al fiecarei bucati de gard
+Astfel, campul first reprezinta capatul inferior iar campul second capatul 
+superior.
+	Am construit un "ArrayList<Pair> garduri = new ArrayList<Pair>()" in care
+am retinut toate bucatile de gard.
+	Am sortat acest array-list cresator dupa capatul inferior, iar in caz de 
+egalitate descrescator dupa capatul superior. Pentru acest lucru am suprascris
+metoda compareTo din clasa Pair.
+	Fiind sortat astfel, bucata de gard (i + 1) putea fi inclusa in bucata de
+gard (i) doar daca capatul superior al bucatii (i+1) era mai mic decat 
+capatul superior al bucatii (i). Daca acest lucru se intampla, inseamna ca bucata (i + 1) 
+este inclusa in bucata (i), deci este redundanta.
+	Pentru a avea o complexitate cat mai mica, am retinut ultima bucata neredun-
+danta, nefiind nevoie sa verific la fiecare pas toate bucatile intre ele.
+
+**Complexitate temporala O(n)
+**Complexitate spatiala O(n)
+
+-------------------------------------------------------------------------------
+problema 3: Gigel bombonel
+
+	In rezolvarea problemei 3 am folosit programarea dinamica, 
+asemanator "problemei ruccsacului".
+	Pentru implementare am folosit o matrice care are ca numar de linii, 
+numarul de elevi, iar ca numar de coloane numarul de bomboane. Un element
+din matrice (i,j) reperzinta numarul de moduri in care se pot imparti 
+j bomboane la primii i copii.
+
+Ex:
+n = 3
+m = 6
+intervale:
+13
+02
+24
+
+	0  | 1 	   | 1       | 1       | 0       | 0         | 0
+	------------------------------------------------------------
+	0  |0+1 = 1|1+1+0 = 2|1+1+1 = 3|0+1+1 = 2|0+0+1 = 1  |0+0+0 = 0
+	----------------------------------------------------------------
+	0  |   0   |    0    |1+0 = 1  |2+1+0 = 3|3+2+1+0 = 6|2+3+2 = 7 
+
+	Astfel am initializat prima linie din matrice(corespunzatoare primului
+copil)cu 0 in afara intervalului sa si cu 1 in interior.Acest lucru se 
+datoreaza faptului ca primuluicopil nu ii pot da decat un numar de bomboane
+ce corespunde intervalului si i le pot da intr-un singur mod, neintervenind
+coditii determinate de intervalele altor elevi.
+	La pasul urmator o bomboana la primii 2 copii o pot imarti doar daca ii 
+dau primului copil o bomboana si niciuna celui de-al doilea (conform
+intervalelor).
+	Doua bomboane la doi copii le pot imparti in 2 moduri(1 bomboana primul
+si 1 bomboana cel de-al doilea sau 2 bomboane primul si nicuna cel de-al 
+doilea).Acest lucru se determina din modul in care am impartit 2 sau 1
+bomboana primului copil.(1+1)
+	s.a.m.d
+
+	In implementare am creat matricea si am initializat primul rand 
+corespunztor primului elev . Apoi am parcurs matricea si am actualizat 
+coloanele.
+Inainte de actualizare am verificat ca intervalele din care iau informatiile la
+pasul anterior sa fie valide.
+
+**Complexitate temporala O(m*n*interval lungime maxima)
+**Complexitate spatiala O(n*m)
